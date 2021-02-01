@@ -20,7 +20,7 @@
 
 .game-board {
     display: inline-block;
-    border: 10px solid #008b8b;
+    border: 10px solid #037415;
     position: relative;
 }
 
@@ -28,7 +28,7 @@
     display: block;
     padding: 5px;
     background-color: #fff;
-    border: 5px solid #deb887;
+    border: 5px solid #044408;
     width: 55%;
     max-width: 500px;
     font-size: 30px;
@@ -36,6 +36,7 @@
     top: 15px;
     z-index: 3;
     margin: 0 auto;
+    
 }
 
 .time-travel {
@@ -51,7 +52,7 @@
     border-radius: 0;
     background-color: #fff;
     box-shadow: none;
-    border: 3px solid #deb887;
+    border: 3px solid #044408;
     margin: 5px;
     cursor: pointer;
 }
