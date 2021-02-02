@@ -100,7 +100,7 @@ class Board extends React.Component {
             //jogador, se a peça "x" está selecionada e qual célula desse tabuleiro é movível, ou seja, pode
             //receber a peça que está selecionada. 
             //A cada seleção de peça e a cada movimento o array é atualizado.
-            console.log(squareClasses)
+            //console.log(squareClasses)
 
             //o clumnsRender foi um array vazio que criamos lá no começo desse código e agora 
             //vamos dar um push nele usando a função de renderSquare mandando os atributos de coordenada, etc.

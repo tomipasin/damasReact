@@ -1,3 +1,10 @@
+body {
+    background: rgb(63,94,251);
+background: radial-gradient(circle, rgba(63,94,251,1) 29%, rgba(119,252,70,1) 100%);
+}
+
+
+
 #root {
     height: 90vh;
     display: flex;
@@ -10,25 +17,28 @@
 
 .players > div {
     display: inline-block;
-    border: 3px solid wheat;
+    border: 3px solid blue;
     font-size: 30px;
     padding: 5px 10px;
     min-width: 250px;
     margin: 0 0 10px 0;
     cursor: pointer;
+    color: green;
+    background: rgb(251,251,251);
+    background: radial-gradient(circle, rgba(251,251,251,1) 33%, rgba(247,252,3,1) 100%);
 }
 
 .game-board {
     display: inline-block;
-    border: 10px solid #037415;
+    border: 10px solid #03157e78;
     position: relative;
 }
 
 .game-status {
     display: block;
     padding: 5px;
-    background-color: #fff;
-    border: 5px solid #044408;
+    background-color: rgba(255, 255, 255, 0.856);
+    border: 5px solid #03157e78;
     width: 55%;
     max-width: 500px;
     font-size: 30px;
@@ -68,7 +78,7 @@
 }
 
 .square {
-    background: no-repeat #fff;
+    background: no-repeat white;
     border: none;
     height: 80px;
     width: 80px;
@@ -94,20 +104,20 @@
 }
 
 .square.black {
-    background-color: #262626;
+    background-color: #26262681;
 }
 
 .square.player1 {
-    background-image: url("img/red-pawn.png");
+    background-image: url("img/vacina.webp");
 }
 .square.player2 {
-    background-image: url("img/blue-pawn.png");
+    background-image: url("img/coronavirus-disease-png-transparent-image-png-mart-coronavirus-png-1197_1199.png");
 }
 .square.player1.king {
-    background-image: url("img/red-king.png");
+    background-image: url("img/red\ covid-icon-mask.png");
 }
 .square.player2.king {
-    background-image: url("img/blue-king.png");
+    background-image: url("img/novo.png");
 }
 
 @media only screen and (max-width: 700px) {
