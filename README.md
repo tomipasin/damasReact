@@ -1,6 +1,6 @@
 # Damas usando React JS
 
-Demo: [http://www.gabrielmioni.com/react-checkers/](http://www.gabrielmioni.com/react-checkers/)
+Demo: [https://tomipasin.github.io/damasReact/](https://tomipasin.github.io/damasReact/)
 
 Um jogo de damas para um ou dois jogadores usando o framework React.js.
 
