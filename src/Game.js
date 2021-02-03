@@ -100,7 +100,6 @@ export class Game extends React.Component {
         piece.player   = player;
         piece.location = location;
         piece.isKing   = false;
-        console.log(piece)
         return piece;
     }
 
