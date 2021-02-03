@@ -69,7 +69,6 @@ export class Game extends React.Component {
         }
         board = this.initPlayers(board);
         //aqui é possível ver o objeto com a distribuição das peças e suas informações.
-        console.log(board)
         return board;
     }
 
@@ -103,31 +102,46 @@ export class Game extends React.Component {
         return piece;
     }
 
-    //parei por aqui.../////////////////////////////////////////////
+    //Aqui uma função que vai guardar o status atual, criando uma const
+    //history e atribuindo a ela o valor do array da chave history que criamos lá no início.
+    //esse this.state.history é responsável por armazenar o histórico das movimentações
+    //de peças no jogo. É o que permite o nosso "voltar".
+    //essa const vai receber o valor do histórico, dar um slice nele capturando 
+    //do 1º valor até o valor do movimento atual(stepnumber lá no this.state) + 1. 
+    //Isso vai retornar o status daquele momento do tabuleiro.
     getCurrentState() {
         const history = this.state.history.slice(0, this.state.stepNumber + 1);
         return history[history.length - 1];
     }
 
+    //aqui uma função que trata do clique:
     handleClick(coordinates) {
-
+        //primeiro verifica se o jogador é o vencedor. Se for para tudo.
         if (this.state.winner !== null) {
             return;
         }
-
+        //se não for o vencedor ele cria umas constantes para o 1) status atual, 
+        //2)status do tabuleiro e 3)quadradinho clicado.
         const currentState = this.getCurrentState();
         const boardState = currentState.boardState;
+        //no caso do clickedSquare o seu valor será um objeto com player, 
+        //location e isKing da coordenada fornecida como parãmetro ao chamar handleClick dentro do boardSatate. 
         const clickedSquare = boardState[coordinates];
 
-        // Clicked on a piece
+
+        // Ao clicar em um quadrado ele verifica se é null (se for null não tem peça nele!)
         if (clickedSquare !== null) {
 
-            // Can't select opponents pieces
+            // também verifica se a peça que está no quadrado não é do teu oponente
+            //e para isso ele verifica se o player do objeto clickedSquare é diferente
+            //do currentPlayer, ou seja, tu.
             if (clickedSquare.player !== returnPlayerName(currentState.currentPlayer)) {
                 return;
             }
 
-            // Unset active piece if it's clicked
+            // se a peça clicada e informada nas coordenadas for a mesma que está em this.state.activePiece
+            //e o hasJumped (movimento) for null essa condicional vai "zerar" os valores da peça para que ela
+            //entre no estado de "desselecionada" (se é que essa palavra existe! hehehe)
             if (this.state.activePiece === coordinates && this.state.hasJumped === null) {
                 this.setState({
                     activePiece: null,
@@ -137,36 +151,42 @@ export class Game extends React.Component {
                 return;
             }
 
-            // Can't choose a new piece if player has already jumped.
+            // Essa condicional não deixa movimentar outra peça se o jogafor já tiver feito seu movimento.
             if (this.state.hasJumped !== null && boardState[coordinates] !== null) {
                 return;
             }
 
-            // Set active piece
+            // Aqui vamos definir a peça que está ativa usando o método getMoves do ReactCheckers e informando 
+            //os argumentos de status do tabuleiro, coordenadas, etc) e dando um this.setState
+            //nas chaves de activePiece, moves e jumpKills.
             let movesData = this.ReactCheckers.getMoves(boardState, coordinates, clickedSquare.isKing, false);
-
             this.setState({
                 activePiece: coordinates,
                 moves: movesData[0],
                 jumpKills: movesData[1],
             });
-
             return;
         }
 
-        // Clicked on an empty square
+        //Se o clique for dado em um quadrado vazio essa condicional não deixa nada acontecer.
         if (this.state.activePiece === null) {
             return;
         }
 
-        // Moving a piece
+        // Agora é a hora de mover a peça. Se o comprimento de moves for maior que 0
+        //uma const chamada postMoveState é criada e a ela é atribuido o valor de
+        //this.state e das coordenadas.
         if (this.state.moves.length > 0) {
             const postMoveState = this.ReactCheckers.movePiece(coordinates, this.state);
-
+            //se o postMoveState for null, ou seja, se o quadrado clicado for vazio nada acontece.
             if (postMoveState === null) {
                 return;
             }
 
+
+
+
+            //parei aqui///////////////////////////////////////////////////
             this.updateStatePostMove(postMoveState);
 
             // Start computer move is the player is finished
