@@ -74,14 +74,14 @@ background: radial-gradient(circle, rgba(63,94,251,1) 29%, rgba(119,252,70,1) 10
 
 .board-col {
     display: inline-block;
-    max-width: 80px;
+    max-width: 65px;
 }
 
 .square {
     background: no-repeat white;
     border: none;
-    height: 80px;
-    width: 80px;
+    height: 65px;
+    width: 65px;
     padding: 5px;
     background-origin: content-box;
     background-size: contain;
